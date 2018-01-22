@@ -1,0 +1,72 @@
+coffeeIn.controller('loginController', function($scope, $http) {
+    
+	$scope.inputLogin = "";
+	$scope.plainPassword = "";
+	
+	$scope.login = function () {
+		
+		var shaObj = new jsSHA("SHA-256", "TEXT");
+		var text = $scope.plainPassword;
+		shaObj.update(text);
+		$scope.passwordHash = shaObj.getHash("HEX");
+		
+		var url = "/login/" + $scope.inputLogin + "/password/" + $scope.passwordHash;
+		
+		$http.get(url)
+		.then(function (response) {
+			alert(response.data.returnMessage);
+		});
+		
+	};
+	
+});
+
+==========
+
+coffeeIn.controller('addUserController', ['$scope', '$http', function($scope, $http) {
+	
+	$scope.plainPassword = "";
+	
+	$scope.user = {
+			userName: "",
+			email: "",
+			passwordHash: "",
+			firstName: "",
+			lastName: "",
+			favoriteFlavor: [],
+			isOwner: "0",
+			ownerApproved: "0",
+			cafeId: "",
+			cafeName: ""
+	};
+	
+	$scope.flavors = {
+			mocha: false,
+			express: false,
+			coldBrew: false
+	};
+	
+	$scope.addUser = function () {
+		
+		var shaObj = new jsSHA("SHA-256", "TEXT");
+		var text = $scope.plainPassword;
+		shaObj.update(text);
+		$scope.user.passwordHash = shaObj.getHash("HEX");
+		
+		if ($scope.flavors.mocha) {
+			$scope.user.favoriteFlavor.push("Mocha");
+		}
+		if ($scope.flavors.express) {
+			$scope.user.favoriteFlavor.push("Express");
+		}
+		if ($scope.flavors.coldBrew) {
+			$scope.user.favoriteFlavor.push("Cold Brew");
+		}
+		
+		$http.post('/users/add', $scope.user)
+	    .then(function (response) {
+
+	    		$scope.PostDataResponse = response.data;
+	    });
+	};
+}]);

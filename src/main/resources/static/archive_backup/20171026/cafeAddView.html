@@ -1,0 +1,141 @@
+<h2>Cafe Information</h2>
+<form class="form-horizontal">
+	<div class="form-group">
+		<label class="control-label col-md-2">Cafe Name:</label>
+		<div class="col-md-10">  
+			<input type="text" ng-model="cafe.cafeName" class="form-control" placeholder="Enter cafe name"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Cafe Address:</label>
+		<div class="col-md-10">  
+			<input type="text" ng-model="cafe.cafeAddress" class="form-control" placeholder="Enter cafe address"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Cafe Hours:</label>
+		<div class="col-md-10">  
+			<label>sunday<input type="checkbox" ng-model="cafe.cafeHours.sunday.isOpen" ng-true-value="1" ng-false-value="0"></label><br/>
+			<label>monday<input type="checkbox" ng-model="cafe.cafeHours.monday.isOpen" ng-true-value="1" ng-false-value="0"></label><br/>
+			<label>tuesday<input type="checkbox" ng-model="cafe.cafeHours.tuesday.isOpen" ng-true-value="1" ng-false-value="0"></label><br/>
+			<label>wednesday<input type="checkbox" ng-model="cafe.cafeHours.wednesday.isOpen" ng-true-value="1" ng-false-value="0"></label><br/>
+			<label>thursday<input type="checkbox" ng-model="cafe.cafeHours.thursday.isOpen" ng-true-value="1" ng-false-value="0"></label><br/>
+			<label>friday<input type="checkbox" ng-model="cafe.cafeHours.friday.isOpen" ng-true-value="1" ng-false-value="0"></label><br/>
+			<label>saturday<input type="checkbox" ng-model="cafe.cafeHours.saturday.isOpen" ng-true-value="1" ng-false-value="0"></label><br/>
+		</div>
+		<div class=" col-md-10">
+			<div class="dropdown btn btn-default">
+				<div id="collectiondropDown" class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown">
+					{{ openTime }}<span class="caret"></span>
+				</div>
+				<ul id="dropDownUL" class="dropdown-menu pull-left" role="menu" aria-labelledby="dLabel">
+					<li ng-click="openTimeClick('00:00')">00:00</li>
+					<li ng-click="openTimeClick('01:00')">01:00</li>
+					<li ng-click="openTimeClick('02:00')">02:00</li>
+					<li ng-click="openTimeClick('03:00')">03:00</li>
+					<li ng-click="openTimeClick('04:00')">04:00</li>
+					<li ng-click="openTimeClick('05:00')">05:00</li>
+					<li ng-click="openTimeClick('06:00')">06:00</li>
+					<li ng-click="openTimeClick('07:00')">07:00</li>
+					<li ng-click="openTimeClick('08:00')">08:00</li>
+					<li ng-click="openTimeClick('09:00')">09:00</li>
+					<li ng-click="openTimeClick('10:00')">10:00</li>
+					<li ng-click="openTimeClick('11:00')">11:00</li>
+					<li ng-click="openTimeClick('12:00')">12:00</li>
+					<li ng-click="openTimeClick('13:00')">13:00</li>
+					<li ng-click="openTimeClick('14:00')">14:00</li>
+					<li ng-click="openTimeClick('15:00')">15:00</li>
+					<li ng-click="openTimeClick('16:00')">16:00</li>
+					<li ng-click="openTimeClick('17:00')">17:00</li>
+					<li ng-click="openTimeClick('18:00')">18:00</li>
+					<li ng-click="openTimeClick('19:00')">19:00</li>
+					<li ng-click="openTimeClick('20:00')">20:00</li>
+					<li ng-click="openTimeClick('21:00')">21:00</li>
+					<li ng-click="openTimeClick('22:00')">22:00</li>
+					<li ng-click="openTimeClick('23:00')">23:00</li>
+					<li ng-click="openTimeClick('24:00')">24:00</li>
+				</ul>
+			</div>
+			<div class="dropdown btn btn-default">
+				<div id="collectiondropDown" class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown">
+					{{ closeTime }}<span class="caret"></span>
+				</div>
+				<ul id="dropDownUL" class="dropdown-menu pull-left" role="menu" aria-labelledby="dLabel">
+					<li ng-click="closeTimeClick('00:00')">00:00</li>
+					<li ng-click="closeTimeClick('01:00')">01:00</li>
+					<li ng-click="closeTimeClick('02:00')">02:00</li>
+					<li ng-click="closeTimeClick('03:00')">03:00</li>
+					<li ng-click="closeTimeClick('04:00')">04:00</li>
+					<li ng-click="closeTimeClick('05:00')">05:00</li>
+					<li ng-click="closeTimeClick('06:00')">06:00</li>
+					<li ng-click="closeTimeClick('07:00')">07:00</li>
+					<li ng-click="closeTimeClick('08:00')">08:00</li>
+					<li ng-click="closeTimeClick('09:00')">09:00</li>
+					<li ng-click="closeTimeClick('10:00')">10:00</li>
+					<li ng-click="closeTimeClick('11:00')">11:00</li>
+					<li ng-click="closeTimeClick('12:00')">12:00</li>
+					<li ng-click="closeTimeClick('13:00')">13:00</li>
+					<li ng-click="closeTimeClick('14:00')">14:00</li>
+					<li ng-click="closeTimeClick('15:00')">15:00</li>
+					<li ng-click="closeTimeClick('16:00')">16:00</li>
+					<li ng-click="closeTimeClick('17:00')">17:00</li>
+					<li ng-click="closeTimeClick('18:00')">18:00</li>
+					<li ng-click="closeTimeClick('19:00')">19:00</li>
+					<li ng-click="closeTimeClick('20:00')">20:00</li>
+					<li ng-click="closeTimeClick('21:00')">21:00</li>
+					<li ng-click="closeTimeClick('22:00')">22:00</li>
+					<li ng-click="closeTimeClick('23:00')">23:00</li>
+					<li ng-click="closeTimeClick('24:00')">24:00</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Phone Number:</label>
+		<div class="col-md-10">  
+			<input type="text" ng-model="cafe.cafeSocialContacts.phoneNumber" class="form-control" placeholder="Enter phone number"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Website:</label>
+		<div class="col-md-10">  
+			<input type="text" ng-model="cafe.cafeSocialContacts.website" class="form-control" placeholder="Enter website"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Facebook:</label>
+		<div class="col-md-10">  
+			<input type="text" ng-model="cafe.cafeSocialContacts.facebook" class="form-control" placeholder="Enter facebook"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Twitter:</label>
+		<div class="col-md-10">  
+			<input type="text" ng-model="cafe.cafeSocialContacts.twitter" class="form-control" placeholder="Enter twitter"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-2">Instagram:</label>
+		<div class="col-md-10">  
+			<input type="text" ng-model="cafe.cafeSocialContacts.instagram" class="form-control" placeholder="Enter instagram"/>
+		</div>
+	</div>
+	<!-- <div class="form-group">
+		<label class="control-label col-md-2">Roasters:</label>
+		<div class="col-md-10">  
+			<label>roasterA<input type="checkbox" ng-model="roasters.roasterA"></label><br/>
+			<label>roasterB<input type="checkbox" ng-model="roasters.roasterB"></label><br/>
+			<label>roasterC<input type="checkbox" ng-model="roasters.roasterC"></label><br/>
+		</div>
+	</div> -->
+	<button type="button" class="btn btn-primary" ng-click="addCafe()" onclick="document.getElementById('primaryButton').click()">Add Cafe</button>
+</form>
+
+<label class="control-label col-md-2">Cafe Picture:</label>
+<div>
+	<form id="form" ng-controller="CafeAddController" action="/files" method="POST" enctype="multipart/form-data">
+		<input type="file" name="file" onchange="getFileData(this)">
+		<input id="primaryButton" type="submit" value="Submit"/>
+	</form>
+</div>
+	

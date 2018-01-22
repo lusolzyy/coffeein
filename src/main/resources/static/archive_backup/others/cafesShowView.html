@@ -1,0 +1,86 @@
+<div class="container">
+	<div class="row">
+		<!-- <div class="col-md-10 col-md-offset-1"> -->
+			<h2>Show Cafe</h2>
+			<a class="btn btn-primary" href="https://www.coffeein.cafe/#/cafes/map">Try Map View</a>
+				<div class="clearfix"></div>
+				<section class="search-box">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-5 listing-block">
+								<div ng-repeat="cafe in allCafes">
+									<div class="media">
+										<div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
+										</div>
+										<img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
+										<div class="media-body pl-3">
+											<div class=panel-title>
+												<h3 class="panel-title">{{ cafe.cafeName }}</h3>
+											</div>
+											<div class="address">{{ cafe.cafeAddress }}</div>
+											<div class="address">
+												<i class="fa fa-phone-square" style="font-size:24px; color:#fbad50"></i> {{ cafe.cafeSocialContacts.phoneNumber }}
+											</div>
+											<div class="stats">
+												<div class="address">{{ cafe.cafeHours.sunday.openTime }} - {{ cafe.cafeHours.sunday.closeTime }}</div>
+												<div class="social">
+													<a href="{{ cafe.cafeSocialContacts.facebook }}" target="_blank"><i class="fa fa-facebook-square" style="font-size:24px; color:#3b5998"></i></a>
+							    						<a href="{{ cafe.cafeSocialContacts.twitter }}" target="_blank"><i class="fa fa-twitter-square" style="font-size:24px; color: #0084b4"></i></a>
+							    						<a href="{{ cafe.cafeSocialContacts.instagram }}" target="_blank"><i class="fa fa-instagram" style="font-size:24px; color:#e95950"></i></a>
+							    						<a href="{{ cafe.cafeSocialContacts.website }}" target="_blank"><i class="fa fa-globe" style="font-size:24px; color:blue"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-7 map-box mx-0 px-0">
+								<iframe width="100%" height="495" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
+							</div>
+						</div>
+					</div>
+				</section>
+			<!-- <!--  --> -->
+			<form class="form-horizontal">
+				<div ng-repeat="cafe in allCafes">
+				    <div class="row">
+				        <div class="col-md-12">
+				        		<div class="panel panel-default">
+							    <div class="panel-heading">
+							        <h3 class="panel-title">{{ cafe.cafeName }}</h3>
+							    </div>
+							    <div class="panel-body">
+							        Address: {{ cafe.cafeAddress }}
+							    </div>
+							    <div class="panel-body">
+							        Hours:<br/>
+							        <label>Sunday: {{ cafe.cafeHours.sunday.openTime }} - {{ cafe.cafeHours.sunday.closeTime }}</label><br/>
+							        <label>Monday: {{ cafe.cafeHours.monday.openTime }} - {{ cafe.cafeHours.monday.closeTime }}</label><br/>
+							        <label>Tuesday: {{ cafe.cafeHours.tuesday.openTime }} - {{ cafe.cafeHours.tuesday.closeTime }}</label><br/>
+							        <label>Wednesday: {{ cafe.cafeHours.wednesday.openTime }} - {{ cafe.cafeHours.wednesday.closeTime }}</label><br/>
+							        <label>Thursday: {{ cafe.cafeHours.thursday.openTime }} - {{ cafe.cafeHours.thursday.closeTime }}</label><br/>
+							        <label>Friday: {{ cafe.cafeHours.friday.openTime }} - {{ cafe.cafeHours.friday.closeTime }}</label><br/>
+							        <label>Saturday: {{ cafe.cafeHours.saturday.openTime }} - {{ cafe.cafeHours.saturday.closeTime }}</label><br/>
+							    </div>
+							    <div class="panel-body">
+							        Tags: {{ cafe.tags }}
+							    </div>
+							    <div class="panel-body">
+							        <label>Phone: {{ cafe.cafeSocialContacts.phoneNumber }}</label><br/>
+							        <label>Facebook: {{ cafe.cafeSocialContacts.facebook }}</label><br/>
+							        <label>Twitter: {{ cafe.cafeSocialContacts.twitter }}</label><br/>
+							        <label>Instagram: {{ cafe.cafeSocialContacts.instagram }}</label><br/>
+							        <label>Website: {{ cafe.cafeSocialContacts.website }}</label><br/>
+							    </div>
+							    <div class="panel-body">
+							        Roaster: {{ cafe.cafeRoasters }}
+							    </div>
+							</div>
+				        </div>
+				    </div>
+				</div>
+			</form>
+		<!-- </div> -->
+	</div>
+</div>

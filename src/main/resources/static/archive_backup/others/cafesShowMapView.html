@@ -1,0 +1,4 @@
+<ng-map zoom="15" center="[40.74, -74.18]" map-type-id="MapTypeId.ROADMAP">
+	<marker position="current" animation="Animation.DROP" icon="http://maps.google.com/mapfiles/ms/micons/man.png" centered="true"></marker>
+	<marker ng-repeat="cafe in allCafes" position="{{ cafe.coordinate }}" animation="Animation.DROP" icon="http://maps.google.com/mapfiles/ms/micons/coffeehouse.png" on-click="showInfoWindow(event, cafe.coordinate, cafe.cafeName)"></marker>
+</ng-map>

@@ -1,0 +1,58 @@
+<!-- Google Map -->
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-cTkBk0xfWRfoX60Ui0pIfD6XQtNEraU&libraries=geometry&callback=initialize"></script>
+ -->
+<div class="container cafes-show-view">
+	<h1>Local Cafes</h1>
+	<div class="row">    
+		<div class="col-xs-8 col-xs-offset-2">
+			<div class="input-group">
+				<div class="input-group-btn search-panel">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span>{{ searchMode }}</span> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li ng-click="searchModeClick('Cafe Name')">Cafe Name</li>
+						<li ng-click="searchModeClick('Cafe Address')">Cafe Address</li>
+					</ul>
+				</div> 
+				<input type="text" class="form-control" name="x" placeholder="Search key word" ng-model="keyWord">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="search()"><span class="glyphicon glyphicon-search"></span></button>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="clearfix"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 listing-block">
+					<div ng-repeat="cafe in allCafesShowResult" class="listing-row">
+						<a href="">
+							<img src = "{{ filePrefix + cafe.cafePicture }}" ng-click="centerMap(cafe)">
+						</a>
+						<div class="text-centered" ng-click="centerMap(cafe)">
+							<div class="cafe-name">{{ cafe.cafeName }}</div>
+							<div class="cafe-address">{{ cafe.cafeAddress }}</div>
+							<div class="cafe-distance">{{ cafe.distanceToCurrentPosition }} miles</div>
+							<div>{{ cafe.cafeHours.sunday.openTime }} - {{ cafe.cafeHours.sunday.closeTime }}</div>
+							<div>
+								<i class="fa fa-phone-square" style="font-size:24px; color:#fbad50"></i> {{ cafe.cafeSocialContacts.phoneNumber }}
+							</div>
+						</div>
+						<div class="icon-centered">
+							<a href="{{ cafe.cafeSocialContacts.facebook }}" target="_blank"><i class="fa fa-facebook-square" style="font-size:24px; color:#3b5998"></i></a>
+	    						<a href="{{ cafe.cafeSocialContacts.twitter }}" target="_blank"><i class="fa fa-twitter-square" style="font-size:24px; color: #0084b4"></i></a>
+	    						<a href="{{ cafe.cafeSocialContacts.instagram }}" target="_blank"><i class="fa fa-instagram" style="font-size:24px; color:#e95950"></i></a>
+	    						<a href="{{ cafe.cafeSocialContacts.website }}" target="_blank"><i class="fa fa-globe" style="font-size:24px; color:#44CEF6"></i></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- <div class="col-md-7 map-box mx-0 px-0">
+					<div class="map" id="map"></div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>

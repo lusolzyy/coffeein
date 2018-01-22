@@ -1,0 +1,25 @@
+<div class="col-sm-6 col-sm-offset-3">
+	<h2>{{ logInHeader }}</h2>
+	<form name="register-form" ng-submit="login()">
+
+		<div class="form-group" ng-show="{{ !isLoggedIn }}">
+			<label>Email / Username</label>
+			<input type="text" class="form-control" ng-model="loginInput" required />
+		</div>
+            
+		<div class="form-group" ng-show="{{ !isLoggedIn }}">
+			<label>Password</label>
+			<input type="password" class="form-control" ng-model="password" required />
+		</div>
+            
+		<div class="form-actions">
+			<button type="submit" class="btn btn-success" ng-show="{{ !isLoggedIn }}">Login</button>
+			<button ng-click="FBLogin()" class="btn btn-success" id="facebook-login" ng-show="{{ !isLoggedIn }}"><i class="fa fa-facebook-square" aria-hidden="true"></i> Log in With Facebook</button>
+			<br>
+		</div>
+		<a href="#/register" ng-show="{{ !isLoggedIn }}">Register a new account</a>
+		<br>
+		<button ng-click="Logout()" class="btn btn-success" id="facebook-logout" ng-show="{{ isLoggedIn }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+		
+	</form>
+</div>

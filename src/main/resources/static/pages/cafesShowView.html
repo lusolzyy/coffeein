@@ -1,0 +1,72 @@
+<div class="cafes-show-view">
+	<h2>Cafes List</h2>
+	<div class="row">    
+		<div class="col-sm-8 search-bar">
+			<div class="input-group">
+				<div class="input-group-btn search-panel">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span>{{ searchMode }}</span> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li ng-click="searchModeClick('Cafe Name')">Cafe Name</li>
+						<li ng-click="searchModeClick('Cafe Address')">Cafe Address</li>
+					</ul>
+				</div> 
+				<input type="text" class="form-control" name="x" placeholder="Search key word" ng-model="keyWord" ng-enter="search()">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="submit" ng-click="search()"><span class="glyphicon glyphicon-search"></span></button>
+				</span>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="clearfix"></div>
+		<div class="container-fluid">
+			<div class="col-sm-5 listing-block">
+				<div ng-repeat="cafe in allCafesShowResult" class="listing-row">
+					<a href="">
+						<img ng-src = "{{ filePrefix + cafe.cafePicture }}" ng-click="pictureClick(cafe)">
+					</a>
+					<div class="text-centered" ng-click="pictureClick(cafe)">
+						<div class="cafe-name">{{ cafe.cafeName }}</div>
+						<div class="cafe-address">{{ cafe.cafeAddress }}</div>
+						<div class="cafe-distance">{{ cafe.distanceToCurrentPosition }} miles</div>
+						<div>{{ cafe.cafeHours.sunday.openTime }} - {{ cafe.cafeHours.sunday.closeTime }}</div>
+						<div>
+							<i class="fa fa-phone-square" style="font-size:24px; color:#fbad50"></i> {{ cafe.cafeSocialContacts.phoneNumber }}
+						</div>
+					</div>
+					<div class="icon-centered">
+						<a href="//{{ cafe.cafeSocialContacts.facebook }}" target="_blank"><i class="fa fa-facebook-square" style="font-size:24px; color:#3b5998"></i></a>
+    						<a href="//{{ cafe.cafeSocialContacts.twitter }}" target="_blank"><i class="fa fa-twitter-square" style="font-size:24px; color: #0084b4"></i></a>
+    						<a href="//{{ cafe.cafeSocialContacts.instagram }}" target="_blank"><i class="fa fa-instagram" style="font-size:24px; color:#e95950"></i></a>
+    						<a href="//{{ cafe.cafeSocialContacts.website }}" target="_blank"><i class="fa fa-globe" style="font-size:24px; color:#44CEF6"></i></a>
+						<a href="#/cafe/{{ cafe.cafeId }}">Show More</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-7 map-box">
+				<ng-map center="current-position" zoom="15" map-type-id="MapTypeId.ROADMAP" class="map">
+					<div ng-repeat="cafe in mapCafes">
+						<marker position="current" animation="Animation.DROP" icon="{url: 'img/man.png'}"></marker>
+						<marker id='{{cafe.id}}' position="{{cafe.coordinate}}" on-click="markerClick(cafe)" icon="{url: 'img/coffeehouse.png'}" animation="Animation.DROP"></marker>
+						<info-window id="info">
+							<div ng-non-bindable="">
+								Cafe Name: {{mapCafe.name}}<br/>
+								Cafe Address: {{mapCafe.address}}<br/>
+							</div>
+						</info-window>
+						<info-window id="info-picture">
+							<div ng-non-bindable="">
+								Cafe Name: {{pictureCafe.cafeName}}<br/>
+								Cafe Address: {{pictureCafe.cafeAddress}}<br/>
+							</div>
+						</info-window>
+					</div>
+				</ng-map>
+			</div>
+		</div>
+	</div>
+</div>

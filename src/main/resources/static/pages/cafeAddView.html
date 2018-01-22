@@ -1,0 +1,65 @@
+<h2 class="col-sm-offset-1">New Cafe Information</h2>
+<div class="add-view">
+	<form name="addCafeForm" ng-submit="addCafe(addCafeForm)">
+		<div class="col-sm-5 col-sm-offset-1 left-form">
+			<div class="form-group">
+				<label>Cafe Name</label>
+		    		<input type="text" class="form-control" ng-model="cafe.cafeName" placeholder="Enter Cafe Name" required title="Cafe name cannot be empty.">
+	  		</div>
+	  		
+	  		<div class="form-group">
+				<label>Cafe Address</label>
+		    		<input type="text" class="form-control" ng-model="cafe.cafeAddress" placeholder="Enter Cafe Address, e.g. 123 Cafe Street, San Francisco, CA" required title="Cafe address cannot be empty.">
+		  	</div>
+		  	
+		  	<div class="form-group">
+		    		<label>Cafe Hours</label>
+		    		<br>
+				<select name="open-hour" class="hour-dropdown" ng-model="openHour" ng-options="hour.OpenHour for hour in openHours" required> 
+					<option value="">Select Open Time</option> 
+				</select>
+				
+				<select name="close-hour" class="hour-dropdown" ng-model="closeHour" ng-options="hour.CloseHour for hour in closeHours" required> 
+					<option value="">Select Close Time</option> 
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label>Phone Number</label>
+		    		<input type="number" class="form-control" ng-model="cafe.cafeSocialContacts.phoneNumber" placeholder="Enter Cafe Phone Number, e.g. 1234567890" maxlength="10" title="Ten digits for US numbers.">
+		  	</div>
+		  	
+	 	</div>
+	 		
+		<div class="col-sm-5 right-form">
+			<div class="form-group">
+				<label>Facebook</label>
+		    		<input type="text" class="form-control" ng-model="cafe.cafeSocialContacts.facebook" placeholder="Enter Facebook Link" title="The format should be '*.facebook.com/YOUR_NAME'." pattern=".*facebook.com/.+">
+		  	</div>
+	  	
+		  	<div class="form-group">
+				<label>Twitter</label>
+		    		<input type="text" class="form-control" ng-model="cafe.cafeSocialContacts.twitter" placeholder="Enter Twitter Link" title="The format should be '*.twitter.com/YOUR_NAME'." pattern=".*twitter.com/.+">
+		  	</div>
+		  	
+		  	<div class="form-group">
+				<label>Instagram</label>
+		    		<input type="text" class="form-control" ng-model="cafe.cafeSocialContacts.instagram" placeholder="Enter Instagram Link" title="The format should be '*.instagram.com/YOUR_NAME'." pattern=".*instagram.com/.+">
+		  	</div>
+		  	
+		  	<div class="form-group">
+				<label>Website</label>
+		    		<input type="text" class="form-control" ng-model="cafe.cafeSocialContacts.website" placeholder="Enter Website Link">
+		  	</div>	
+		</div>
+	
+	
+		<div class="col-sm-offset-1">
+			<input id="uploadFile" type="file" file-model="myFile"/>
+			<div>
+				<h5 id="size-limit">Size limit: 512KB</h5>
+			</div>
+			<button type="submit" class="btn btn-success"><i class="fa fa-coffee" aria-hidden="true"></i> New Cafe</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="coffeeIn">
+    <head>
+        <title>CoffeeIn v1.1.0-Beta</title>
+        <meta charset="UTF-8">
+        <base href="/#">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- load bootstrap via CDN -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+		<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+        <!-- load angular via CDN -->
+        <!-- 1.6.0 has issue to read and write cookies -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-route.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-resource.min.js"></script>
+        <script src="js/angular-local-storage.js"></script>
+
+        <script src="js/app.js"></script>
+        <script src="js/appServices.js"></script>
+        <script src="js/cafeAddController.js"></script>
+        <script src="js/cafesShowController.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+
+
+        <script src="js/homeController.js"></script>
+        <script src="js/loginController.js"></script>
+        <script src="js/registerController.js"></script>
+        <script src="js/whatsNewController.js"></script>
+        <script src="js/aboutController.js"></script>
+        <script src="js/appDirective.js"></script>
+        <script src="js/testController.js"></script>
+        <script src="js/uploadPicturesController.js"></script>
+        <script src="js/ng-file-upload.min.js"></script>
+        <script src="js/singleCafeController.js"></script>
+        <script src="js/editCafeController.js"></script>
+        <script src="js/navbarController.js"></script>
+        <script src="js/contactController.js"></script>
+        <script src="js/sha256.js"></script>
+
+		<!--  GOOGLE MAP -->
+		<script src="https://maps.google.com/maps/api/js?key=AIzaSyC-cTkBk0xfWRfoX60Ui0pIfD6XQtNEraU&libraries=placeses,visualization,drawing,geometry,places"></script>
+		<script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <header>
+			<nav class="navbar navbar-default" ng-controller="NavbarController">
+				<div class="container col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#coffeein-navbar-collapse" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="#/" class="navbar-left"><img class="navbar-brand" src="/img/logo.png"></a>
+					</div>
+					<div class="collapse navbar-collapse" id="coffeein-navbar-collapse">
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#/">Home</a></li>
+							<li class="dropdown">
+								<a href="" class="dropdown-toggle" data-toggle="dropdown">Cafe<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#/cafes">Show All Cafes</a></li>
+									<li><a href="#/cafe/add">Add New Cafe</a></li>
+									<li><a href="#/cafe/edit">Edit Cafe</a></li>
+									<li><a href="#/uploadpictures">Upload Pictures</a></li>
+								</ul>
+							</li>
+							<li><a href="#/whatsnew">What's new</a></li>
+							<li class="dropdown">
+								<a href="" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#/about">About Our Team</a></li>
+									<li><a href="#/contact">Bug Report</a></li>
+									<li><a href="#/test">Test</a></li>
+								</ul>
+							</li>
+							<li><a href="#/login" ng-bind="loginOrLogout"></a></li>
+					    </ul>
+
+					    <!-- <ul class="nav navbar-nav navbar-right">
+							<li><a href="#/">Home</a></li>
+							<li class="dropdown">
+								<a href="" class="dropdown-toggle" data-toggle="dropdown">Cafe<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="https://www.coffeein.cafe/#/cafes">Show All Cafes</a></li>
+									<li><a href="https://www.coffeein.cafe/#/cafe/add">Add New Cafe</a></li>
+									<li><a href="https://www.coffeein.cafe/#/cafe/edit">Edit Cafe</a></li>
+									<li><a href="https://www.coffeein.cafe/#/uploadpictures">Upload Pictures</a></li>
+								</ul>
+							</li>
+							<li><a href="https://www.coffeein.cafe/#/whatsnew">What's new</a></li>
+							<li class="dropdown">
+								<a href="" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="https://www.coffeein.cafe/#/about">About Our Team</a></li>
+									<li><a href="https://www.coffeein.cafe/#/contact">Bug Report</a></li>
+									<li><a href="https://www.coffeein.cafe/#/test">Test</a></li>
+								</ul>
+							</li>
+							<li><a href="https://www.coffeein.cafe/#/login" ng-bind="loginOrLogout">Login</a></li>
+					    </ul> -->
+
+					</div>
+				</div>
+			</nav>
+		</header>
+
+        <div class="container-fluid body-container">
+                <!-- <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div> -->
+			<div ng-view></div>
+
+		</div>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<ul class="list-unstyled">
+							<li><a  href="https://www.coffeein.cafe/#/about"><i class="fa fa-angle-double-right"></i> About Us</a></li>
+							<li><a  href="https://www.coffeein.cafe/#/contact"><i class="fa fa-angle-double-right"></i> Contact Us</a></li>
+							<a href="https://www.facebook.com/softslug" target="_blank"><i class="fa fa-facebook-square" id="social" style="font-size:24px; color:#3b5998"></i></a>
+							<a href="https://twitter.com/realsoftslug" target="_blank"><i class="fa fa-twitter-square" id="social" style="font-size:24px; color: #0084b4"></i></a>
+							<a href="https://instagram.com/realsoftslug" target="_blank"><i class="fa fa-instagram" id="social" style="font-size:24px; color:#e95950"></i></a>
+							<a href="mailto:info@softslug.com" target="_blank"><i class="fa fa-envelope-square" id="social" style="font-size:24px; color:#44CEF6"></i></a>
+						</ul>
+					</div>
+
+					<div class="col-lg-3 col-md-3">
+						<ul class="list-unstyled">
+							<li>
+								<div class="footerp">
+									<p><br>SoftSlug LLC<br>
+									Email <a href="mailto:info@softslug.com">info@softslug.com</a></p>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-lg-3 col-md-3">
+						<ul class="list-unstyled">
+							<li>
+								<div class="footerp">
+									<p>831-332-7872<br>
+									1900 Camden Ave, Ste 101, San Jose, 95124</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+    <div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="copyright">
+							Copyright &copy 2017 SoftSlug
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

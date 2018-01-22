@@ -1,0 +1,26 @@
+<div class="upload-pictures-view col-sm-offset-1">
+	<h2>Upload Multiple Pictures for Cafe</h2>
+	<h3>Please choose Cafe</h3>
+	<div class="dropdown btn btn-default">
+		<div id="collectiondropDown" class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown">
+			{{ cafeSelected }}<span class="caret"></span>
+		</div>
+		<ul id="dropDownUL" class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dLabel">
+			<li ng-repeat="cafe in allCafes" ng-click="cafeChange(cafe)">{{ cafe.cafeName }}</li>
+		</ul>
+	</div>
+	
+	<h4>Upload on file select</h4>
+	<button ngf-select="uploadFiles($files)" multiple accept="image/*">Select Files</button>
+	<h5 id="size-limit">Single file size limit: 512KB</h5>
+	<h5>Files:</h5>
+	<ul>
+		<li ng-repeat="f in files" style="font:smaller">
+			{{f.name}}
+		</li>
+	</ul>
+	<span class="progress" ng-show="progress >= 0">
+		<div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+	</span>
+	{{errorMsg}}
+</div>

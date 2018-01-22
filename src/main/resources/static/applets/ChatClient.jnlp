@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase=
+"http://localhost:8080/#/test" 
+    href="applets/ChatClient.jnlp">
+    <information>
+        <title>Coffee Chat</title>
+        <vendor>SoftSlug</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.7+"
+              href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="applets/ChatClient.jar"
+            main="true" />
+
+    </resources>
+    <application-desc
+         name="Coffee Chat"
+         main-class=
+           "cafe.coffeein.coffeechat.LoginWindow"
+         width="300"
+         height="300">
+     </application-desc>
+     <update check="background"/>
+</jnlp>

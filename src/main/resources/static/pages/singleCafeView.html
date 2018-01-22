@@ -1,0 +1,24 @@
+<div class="single-cafe-view">
+	<h2>Cafe Details</h2>
+	<h3>Name: {{ singleCafe.cafeName }}</h3>
+	<h3>Address: {{ singleCafe.cafeAddress }}</h3>
+	<a class="btn btn-primary" href="#/cafes">Back to Cafe List <i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+</div>
+
+<div class="col-sm-6 co-xs-12 gal-item" ng-repeat="picture in singleCafe.uploadPictures">
+	<div class="box">
+		<a href="" data-toggle="modal" data-target="#{{$index}}">
+			<img ng-src="{{ filePrefix + picture }}">
+		</a>
+		<div class="modal fade" id="{{$index}}" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<div class="modal-body">
+						<img ng-src="{{ filePrefix + picture }}">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
